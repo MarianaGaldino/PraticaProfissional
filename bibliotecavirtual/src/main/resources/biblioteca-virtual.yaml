@@ -1,0 +1,129 @@
+#swagger: '2.0'
+#info:
+#  version: 1.0.0
+#  title: API de Leitores
+#  description: API RESTful para gerenciar leitores
+#basePath: /api/v1
+#schemes:
+#  - http
+#consumes:
+#  - application/json
+#produces:
+#  - application/json
+#paths:
+#  /leitores:
+#    post:
+#      summary: Cria um novo leitor
+#      consumes:
+#        - application/json
+#      produces:
+#        - application/json
+#      parameters:
+#        - in: body
+#          name: leitor
+#          description: Objeto JSON contendo os dados do novo leitor
+#          required: true
+#          schema:
+#            $ref: '#/definitions/LeitorInput'
+#      responses:
+#        '201':
+#          description: Leitor criado com sucesso
+#    get:
+#      summary: Retorna todos os leitores
+#      produces:
+#        - application/json
+#      responses:
+#        '200':
+#          description: Lista de todos os leitores
+#          schema:
+#            type: array
+#            items:
+#              $ref: '#/definitions/LeitorOutput'
+#  /leitores/{id}:
+#    get:
+#      summary: Retorna um leitor pelo ID
+#      produces:
+#        - application/json
+#      parameters:
+#        - in: path
+#          name: id
+#          description: ID do leitor a ser retornado
+#          required: true
+#          type: integer
+#          format: int64
+#      responses:
+#        '200':
+#          description: Leitor encontrado
+#          schema:
+#            $ref: '#/definitions/LeitorOutput'
+#    put:
+#      summary: Atualiza um leitor existente
+#      consumes:
+#        - application/json
+#      parameters:
+#        - in: path
+#          name: id
+#          description: ID do leitor a ser atualizado
+#          required: true
+#          type: integer
+#          format: int64
+#        - in: body
+#          name: leitor
+#          description: Objeto JSON contendo os dados do leitor atualizado
+#          required: true
+#          schema:
+#            $ref: '#/definitions/LeitorInput'
+#      responses:
+#        '204':
+#          description: Leitor atualizado com sucesso
+#    delete:
+#      summary: Exclui um leitor existente
+#      parameters:
+#        - in: path
+#          name: id
+#          description: ID do leitor a ser excluído
+#          required: true
+#          type: integer
+#          format: int64
+#      responses:
+#        '204':
+#          description: Leitor excluído com sucesso
+#definitions:
+#  LeitorInput:
+#    type: object
+#    required:
+#      - nome
+#      - telefone
+#      - email
+#      - senha
+#    properties:
+#      nome:
+#        type: string
+#        example: João da Silva
+#      telefone:
+#        type: string
+#        example: (11) 99999-9999
+#      email:
+#        type: string
+#        format: email
+#        example: joao.silva@gmail.com
+#      senha:
+#        type: string
+#        format: password
+#        example: senha123
+#  LeitorOutput:
+#    type: object
+#    properties:
+#      id:
+#        type: integer
+#        example: 1
+#      nome:
+#        type: string
+#        example: João da Silva
+#      telefone:
+#        type: string
+#        example: (11) 99999-9999
+#      email:
+#        type: string
+#        format: joaosilva@gmail.com
+#
