@@ -6,6 +6,7 @@ import lombok.*;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -14,6 +15,7 @@ public class Leitor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(nullable = false)
@@ -22,5 +24,7 @@ public class Leitor {
     private Integer telefone;
     @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
+    private String senha;
 
 }
