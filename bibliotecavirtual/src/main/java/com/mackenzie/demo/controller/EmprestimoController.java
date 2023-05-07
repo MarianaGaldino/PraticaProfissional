@@ -18,7 +18,7 @@ public class EmprestimoController {
     }
 
     @PostMapping
-    public Emprestimo criarEmprestimo(@RequestBody EmprestimoDTO emprestimoDTO){
-        return emprestimoService.criarEmprestimo(emprestimoDTO);
+    public Emprestimo efetuarEmprestimo(@RequestBody EmprestimoDTO emprestimoDTO){
+        return emprestimoService.efetuarEmprestimo(emprestimoDTO);
     }
 }
