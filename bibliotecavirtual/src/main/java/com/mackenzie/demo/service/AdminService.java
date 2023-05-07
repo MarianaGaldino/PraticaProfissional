@@ -4,8 +4,9 @@ import com.mackenzie.demo.domain.Admin;
 import com.mackenzie.demo.domain.dto.AdminDTO;
 import com.mackenzie.demo.repository.AdminRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -18,18 +19,24 @@ public class AdminService {
     }
 
     public Admin registerAdmin (AdminDTO adminDTO){
-        return adminRepository.save(adminDTO);
+        log.info("Try to register admin for name {}", adminDTO.getNome());
+        return adminRepository.save(adminDTO.mapToEntity());
+
     }
 
-    public Admin getAdmin(long id){
-        return adminRepository.findAll(id);
+    public Optional<Admin> getAdmin(long id){
+        log.info("Try to get admin for id{}", id);
+        return adminRepository.findById(id);
+
     }
 
-    public ResponseEntity deleteAdmin (long id){
-        return adminRepository.delete(id);
+    public void deleteAdmin (Long id){
+        log.info("Try to delete admin for id {}", id);
+        adminRepository.deleteById(id);
     }
 
     public Admin updateAdmin (AdminDTO adminDTO){
-        return adminRepository.save(adminDTO);
+        log.info("Try to update admin for name {}", adminDTO.getNome());
+        return adminRepository.save(adminDTO.mapToEntity());
     }
 }

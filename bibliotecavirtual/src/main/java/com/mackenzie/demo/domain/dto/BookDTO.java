@@ -1,6 +1,7 @@
 package com.mackenzie.demo.domain.dto;
 
 import com.mackenzie.demo.domain.Autor;
+import com.mackenzie.demo.domain.Book;
 import com.mackenzie.demo.domain.Editora;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,8 +16,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookDTO {
-    String name;
-    Integer páginas;
+
+    String titulo;
+    Integer ano;
     Autor autor;
     Editora editora;
+
+    public Book mapToEntity() {
+        return Book.builder()
+                .titulo(this.titulo)
+                .ano(this.ano)
+                .autor(this.autor)
+                .editora(this.editora)
+                .build();
+    }
 }

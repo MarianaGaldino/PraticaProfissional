@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 
 @RestController
 @AllArgsConstructor
@@ -29,7 +31,7 @@ public class BookController {
     }
 
     @GetMapping()
-    public Book getBooks(@RequestParam Long id){
+    public Optional<Book> getBooks(@RequestParam Long id){
         return bookService.getBooks(id);
     }
 
@@ -40,6 +42,7 @@ public class BookController {
 
     @DeleteMapping
     public ResponseEntity deleteBook(@RequestParam Long id){
-        return bookService.deleteBook(id);
+        bookService.deleteBook(id);
+        return ResponseEntity.noContent().build();
     }
 }

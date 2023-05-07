@@ -4,8 +4,10 @@ import com.mackenzie.demo.domain.Editora;
 import com.mackenzie.demo.domain.dto.EditoraDTO;
 import com.mackenzie.demo.repository.EditoraRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -18,19 +20,26 @@ public class EditoraService {
     }
 
     public Editora registerEditora(EditoraDTO editoraDTO){
-        return editoraRepository.save(editoraDTO);
+        log.info("Try to register editora for name {}", editoraDTO.getNome());
+       return editoraRepository.save(editoraDTO.mapToEntity());
+
     }
 
-    public Editora getEditora(Long id){
-        return editoraRepository.findAll(id);
+    public Optional<Editora> getEditora(Long id){
+        log.info("Try to get editora for id  {}", id);
+        return editoraRepository.findById(id);
+
     }
 
     public Editora updateEditora(EditoraDTO editoraDTO){
-        return editoraRepository.save(editoraDTO);
+        log.info("Try to update editora for name {}", editoraDTO.getNome());
+        return editoraRepository.save(editoraDTO.mapToEntity());
+
     }
 
-    public ResponseEntity deleteEditora(Long id){
-        return editoraRepository.delete(id);
+    public void deleteEditora(Long id){
+        log.info("Try to delete editora for id  {}", id);
+        editoraRepository.deleteById(id);
     }
 }
 

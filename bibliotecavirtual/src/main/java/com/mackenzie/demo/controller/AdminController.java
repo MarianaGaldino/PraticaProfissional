@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
@@ -29,7 +31,7 @@ public class AdminController {
     }
 
     @GetMapping()
-    public Admin getAdmin (@RequestParam Long id){
+    public Optional<Admin> getAdmin (@RequestParam Long id){
         return adminService.getAdmin(id);
     }
 
@@ -40,6 +42,7 @@ public class AdminController {
 
     @DeleteMapping()
     public ResponseEntity deleteAdmin (@RequestParam Long id){
-        return adminService.deleteAdmin(id);
+        adminService.deleteAdmin(id);
+        return ResponseEntity.noContent().build();
     }
 }

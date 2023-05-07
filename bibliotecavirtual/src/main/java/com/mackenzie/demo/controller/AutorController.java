@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/autor")
 public class AutorController {
@@ -29,13 +31,14 @@ public class AutorController {
     }
 
     @GetMapping()
-    public Autor getAutor(@RequestParam Long id){
+    public Optional<Autor> getAutor(@RequestParam Long id){
         return autorService.getAutor(id);
     }
 
     @DeleteMapping()
     public ResponseEntity deleteAutor(@RequestParam Long id ){
-        return autorService.deleteAutor(id);
+        autorService.deleteAutor(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping()

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/editora")
 public class EditoraController {
@@ -29,7 +31,7 @@ public class EditoraController {
     }
 
     @GetMapping()
-    public Editora getEditora(@RequestParam Long id){
+    public Optional<Editora> getEditora(@RequestParam Long id){
         return editoraService.getEditora(id);
     }
 
@@ -40,6 +42,7 @@ public class EditoraController {
 
     @DeleteMapping()
     public ResponseEntity deleteEditora(@RequestParam Long id){
-        return  editoraService.deleteEditora(id);
+        editoraService.deleteEditora(id);
+        return ResponseEntity.noContent().build();
     }
 }

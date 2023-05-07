@@ -1,5 +1,6 @@
 package com.mackenzie.demo.domain.dto;
 
+import com.mackenzie.demo.domain.Admin;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,4 +17,13 @@ public class AdminDTO {
     private String telefone;
     private String email;
     private String senha;
+
+    public Admin mapToEntity() {
+        return Admin.builder()
+                .nome(this.nome)
+                .telefone(this.telefone)
+                .email(this.email)
+                .senha(this.senha)
+                .build();
+    }
 }

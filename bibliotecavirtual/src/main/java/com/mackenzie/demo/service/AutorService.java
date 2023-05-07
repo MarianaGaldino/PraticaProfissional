@@ -4,8 +4,10 @@ import com.mackenzie.demo.domain.Autor;
 import com.mackenzie.demo.domain.dto.AutorDTO;
 import com.mackenzie.demo.repository.AutorRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -17,18 +19,26 @@ public class AutorService {
     }
 
     public Autor registerAutor(AutorDTO autorDTO){
-        return autorRepository.save(autorDTO);
+        log.info("Try to register autor for name {}", autorDTO.getNome());
+        return autorRepository.save(autorDTO.mapToEntity());
+
     }
 
     public Autor updateAutor(AutorDTO autorDTO){
-        return autorRepository.save(autorDTO);
+        log.info("Try to update autor for name {}", autorDTO.getNome());
+        return autorRepository.save(autorDTO.mapToEntity());
+
     }
 
-    public ResponseEntity deleteAutor(Long id){
-        return autorRepository.delete(id);
+    public void deleteAutor(Long id){
+        log.info("Try to delete autor for id{}", id);
+       autorRepository.deleteById(id);
+
     }
 
-    public Autor getAutor(Long id){
-        return autorRepository.findAll(id);
+    public Optional<Autor> getAutor(Long id){
+        log.info("Try to get autor for id {}", id);
+       return autorRepository.findById(id);
+
     }
 }
