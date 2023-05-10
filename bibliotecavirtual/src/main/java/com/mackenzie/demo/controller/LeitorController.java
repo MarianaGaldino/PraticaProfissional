@@ -29,8 +29,8 @@ public class LeitorController {
     }
 
     @PutMapping
-    public Leitor editarLeitor(@RequestBody LeitorDTO leitorDTO ){
-        return leitorService.editarLeitor(leitorDTO);
+    public Leitor editarLeitor(@RequestParam Long id, @RequestBody LeitorDTO leitorDTO ){
+        return leitorService.editarLeitor(id, leitorDTO);
     }
 
 

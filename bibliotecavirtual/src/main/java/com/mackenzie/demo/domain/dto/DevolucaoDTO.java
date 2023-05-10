@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class DevolucaoDTO {
 
-    private Long id;
+
     private Leitor leitor;
 
     private Book livro;
@@ -26,7 +26,6 @@ public class DevolucaoDTO {
 
     public Devolucao mapToEntity() {
         return Devolucao.builder()
-                .id(this.id)
                 .usuario(this.leitor)
                 .livro(this.livro)
                 .dataDevolucao(this.dataDevolucao)

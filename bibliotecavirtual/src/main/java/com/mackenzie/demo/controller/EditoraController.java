@@ -36,8 +36,8 @@ public class EditoraController {
     }
 
     @PutMapping()
-    public Editora updateEditora(@RequestBody EditoraDTO editoraDTO){
-        return editoraService.updateEditora(editoraDTO);
+    public Editora updateEditora(@RequestParam Long id, @RequestBody EditoraDTO editoraDTO){
+        return editoraService.updateEditora(id, editoraDTO);
     }
 
     @DeleteMapping()

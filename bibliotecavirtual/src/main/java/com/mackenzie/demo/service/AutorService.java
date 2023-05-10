@@ -1,6 +1,8 @@
 package com.mackenzie.demo.service;
 
+import com.mackenzie.demo.domain.Admin;
 import com.mackenzie.demo.domain.Autor;
+import com.mackenzie.demo.domain.dto.AdminDTO;
 import com.mackenzie.demo.domain.dto.AutorDTO;
 import com.mackenzie.demo.repository.AutorRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -24,11 +26,15 @@ public class AutorService {
 
     }
 
-    public Autor updateAutor(AutorDTO autorDTO){
+    public Autor updateAutor(Long id, AutorDTO autorDTO){
         log.info("Try to update autor for name {}", autorDTO.getNome());
-        return autorRepository.save(autorDTO.mapToEntity());
+        Optional<Autor> autor = autorRepository.findById(id);
+        Autor autorToSave = autor.get();
+
+        return autorRepository.save(updateParams(autorToSave, autorDTO));
 
     }
+
 
     public void deleteAutor(Long id){
         log.info("Try to delete autor for id{}", id);
@@ -41,4 +47,12 @@ public class AutorService {
        return autorRepository.findById(id);
 
     }
+
+    private Autor updateParams(Autor autor, AutorDTO autorDTO){
+        autor.setNome(autorDTO.getNome());
+        autor.setDataNascimento(autorDTO.getDataNascimento());
+        return autor;
+
+    }
+
 }

@@ -36,8 +36,8 @@ public class BookController {
     }
 
     @PutMapping
-    public Book updateBook(@RequestBody BookDTO bookDTO){
-        return bookService.updateBook(bookDTO);
+    public Book updateBook(@RequestParam Long id, @RequestBody BookDTO bookDTO){
+        return bookService.updateBook(id, bookDTO);
     }
 
     @DeleteMapping

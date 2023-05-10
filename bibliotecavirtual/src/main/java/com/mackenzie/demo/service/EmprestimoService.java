@@ -18,7 +18,7 @@ public class EmprestimoService {
     }
 
     public Emprestimo efetuarEmprestimo(EmprestimoDTO emprestimoDTO){
-        log.info("Try to register emprestimo for name {}", emprestimoDTO.getLeitor());
+        log.info("Try to register emprestimo for name {}", emprestimoDTO.getLeitor().getNome());
         return emprestimoRepository.save(emprestimoDTO.mapToEntity());
     }
 
