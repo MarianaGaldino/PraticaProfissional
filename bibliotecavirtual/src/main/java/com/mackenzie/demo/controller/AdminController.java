@@ -2,10 +2,13 @@ package com.mackenzie.demo.controller;
 
 import com.mackenzie.demo.domain.Admin;
 import com.mackenzie.demo.domain.dto.AdminDTO;
+import com.mackenzie.demo.exception.PraticaprofissionalException;
 import com.mackenzie.demo.service.AdminService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,8 +39,8 @@ public class AdminController {
     }
 
     @PutMapping()
-    public Admin updateAdmin(@RequestBody AdminDTO adminDTO){
-        return adminService.updateAdmin(adminDTO);
+    public Admin updateAdmin(@RequestParam Long id , @RequestBody AdminDTO adminDTO)  {
+        return adminService.updateAdmin(id, adminDTO);
     }
 
     @DeleteMapping()

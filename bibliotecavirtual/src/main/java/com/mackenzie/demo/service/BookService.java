@@ -1,6 +1,8 @@
 package com.mackenzie.demo.service;
 
+import com.mackenzie.demo.domain.Admin;
 import com.mackenzie.demo.domain.Book;
+import com.mackenzie.demo.domain.dto.AdminDTO;
 import com.mackenzie.demo.domain.dto.BookDTO;
 import com.mackenzie.demo.repository.BookRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -32,10 +34,12 @@ public class BookService {
 
     }
 
-    public Book updateBook(BookDTO bookDTO){
+    public Book updateBook(Long id, BookDTO bookDTO){
         log.info("Try to update book for name {}", bookDTO.getTitulo());
-        return bookRepository.save(bookDTO.mapToEntity());
+        Optional<Book> book = bookRepository.findById(id);
+        Book bookToSave = book.get();
 
+        return bookRepository.save(updateParams(bookToSave, bookDTO));
     }
 
     public Optional<Book> getBooks(Long id){
@@ -43,6 +47,17 @@ public class BookService {
         return bookRepository.findById(id);
 
     }
+
+    private Book updateParams(Book book, BookDTO bookDTO){
+        book.setTitulo(bookDTO.getTitulo());
+        book.setAno(bookDTO.getAno());
+        book.setAutor(bookDTO.getAutor());
+        book.setEditora(bookDTO.getEditora());
+
+        return book;
+
+    }
+
 
 
 }

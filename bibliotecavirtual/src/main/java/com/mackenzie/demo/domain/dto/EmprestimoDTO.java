@@ -13,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmprestimoDTO {
-    private Long id;
+
 
     private Leitor leitor;
 
@@ -24,7 +24,6 @@ public class EmprestimoDTO {
 
     public Emprestimo mapToEntity() {
         return Emprestimo.builder()
-                .id(this.id)
                 .usuario(this.leitor)
                 .livro(this.livro)
                 .dataEmprestimo(this.dataEmprestimo)

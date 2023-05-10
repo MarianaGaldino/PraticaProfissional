@@ -1,6 +1,8 @@
 package com.mackenzie.demo.service;
 
+import com.mackenzie.demo.domain.Admin;
 import com.mackenzie.demo.domain.Leitor;
+import com.mackenzie.demo.domain.dto.AdminDTO;
 import com.mackenzie.demo.domain.dto.LeitorDTO;
 import com.mackenzie.demo.repository.LeitorRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -36,9 +38,22 @@ public class LeitorService {
          leitorRepository.deleteById(id);
     }
 
-    public Leitor editarLeitor(LeitorDTO leitorDTO){
+    public Leitor editarLeitor(Long id,LeitorDTO leitorDTO){
         log.info("Try to update leitor for name {}", leitorDTO.getNome());
-        return leitorRepository.save(leitorDTO.mapToEntity());
+        Optional<Leitor> leitor = leitorRepository.findById(id);
+        Leitor leitorToSave = leitor.get();
+
+        return leitorRepository.save(updateParams(leitorToSave, leitorDTO));
+    }
+
+    private Leitor updateParams(Leitor leitor, LeitorDTO leitorDTO){
+        leitor.setNome(leitorDTO.getNome());
+        leitor.setEmail(leitorDTO.getEmail());
+        leitor.setTelefone(leitorDTO.getTelefone());
+        leitor.setSenha(leitorDTO.getSenha());
+
+        return leitor;
+
     }
 }
 

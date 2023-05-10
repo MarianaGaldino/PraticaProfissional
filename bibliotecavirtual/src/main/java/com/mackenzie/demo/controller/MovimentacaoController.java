@@ -16,7 +16,7 @@ public class MovimentacaoController {
     }
 
     @GetMapping
-    public List<Movimentacao> consultarMovimentacao(){
+    public Movimentacao consultarMovimentacao(){
         return movimentacaoService.consultarMovimentacao();
     }
 }

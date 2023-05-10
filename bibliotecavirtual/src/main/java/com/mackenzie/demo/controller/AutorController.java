@@ -42,8 +42,8 @@ public class AutorController {
     }
 
     @PutMapping()
-    public Autor updateAutor(@RequestBody AutorDTO autorDTO){
-        return autorService.updateAutor(autorDTO);
+    public Autor updateAutor(@RequestParam Long id, @RequestBody AutorDTO autorDTO){
+        return autorService.updateAutor(id, autorDTO);
     }
 
 }

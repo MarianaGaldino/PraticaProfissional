@@ -18,11 +18,13 @@ public class Devolucao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Leitor usuario;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Book livro ;
+
     @Column(nullable = false)
     private LocalDate dataDevolucao;
 
