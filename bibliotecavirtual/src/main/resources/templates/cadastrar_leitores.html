@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="icons" content="width=device-width, initial-scale=5">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<!--code icon form fontawesome.com-->
+ 	<link rel = "stylesheet" type="text/css" href = "../../css/cadastrar_leitores.css">
+
+</head>
+<body>
+  
+<div class="container">
+<!--     upside area     -->
+    <div class="upsideArea">
+        <div class="avatar">
+            <img src="https://yt3.ggpht.com/a/AATXAJyk8nhYqLaKpWYQwrxmmpagCSn73dyNzN8QCA=s900-c-k-c0xffffffff-no-rj-mo" alt="">
+            <div class="avatarName">Administrador<br>
+          <ul>
+          <li><a href="">Sair</a>
+          </div>
+<!--     end of upside area  -->            
+        </div>
+        <ul class="sideMenu">
+            
+          <li><a href="invoice_list.php"><i class="fa fa-briefcase my-icon"></i></span>Efetuar empréstimos</a></li>
+            <li><a href="product_list.php"><i class="fa fa-shopping-basket my-icon"></i></span>Efetuar devoluções</a></li>
+            <li><a href="product_list.php"><i class="fa fa-shopping-basket my-icon"></i></span>Movimentações</a></li>
+            <li><a href="order_list.php"><i class="fa fa-book my-icon"></i></span>Cadastrar Usuários</a></li>
+            <li><a href="business_list.php"><i class="fa fa-list my-icon"></i></span>Cadastrar Leitores</a></li>
+            <li><a href="business_list.php"><i class="fa fa-list my-icon"></i></span>Cadastrar Livros</a></li>
+            <li><a href="business_list.php"><i class="fa fa-list my-icon"></i></span>Cadastrar Editora</a></li>
+            <li><a href="business_list.php"><i class="fa fa-list my-icon"></i></span>Cadastrar Autores</a></li>
+        </ul>
+    </div>
+
+<!--     SIDE AREA -->
+    <div class="mainArea">
+    <div class="mainContent">  
+
+          <!-- list -->
+    <div class="areaFilter fr row">   
+</div>
+
+          
+<!-- DETAIL FORM -->
+<form action="/leitores/create" method="POST" class="form">
+    <div class="formHeader row">
+        <h2 class="text-1 fl">Cadastrar Leitores</h2>
+        <div class="fr">
+            <button type="submit" class="btnSave bg-1 text-2a3f54 text-bold fr">Salvar</button><a href="" class="btnAdd fa fa-plus bg-1 text-2a3f54"></a>
+        </div>
+    </div>
+    <div class="formBody row">
+        <div class="column s-6">
+            <label class="inputGroup">
+                <span>Nome</span>
+                <span><input type="text" name="Nome" placeholder="Nome"></span>
+            </label>
+            <label class="inputGroup">
+                <span>telefone</span>
+                <span><input type="text" name="telefone" placeholder="telefone"></span>
+            </label>			
+            <label class="inputGroup">
+                <span>email</span>
+                <span><input type="text" name="email" placeholder="email"></span>
+            </label>
+			<label class="inputGroup">
+                <span>Senha</span>
+                <span><input type="password" name="Senha" placeholder="Senha"></span>
+            </label>
+        </div>
+    </div>
+</form> 
+                  
+        
+    </ul>
+</div>  
+        </div>
+        <!-- END CONTAINER  -->
+    </div>
+</div>
+
+</body>
+</html>
