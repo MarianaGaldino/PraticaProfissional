@@ -5,6 +5,7 @@ import com.mackenzie.demo.domain.dto.BookDTO;
 import com.mackenzie.demo.service.BookService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,17 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 
-@RestController
-@AllArgsConstructor
+@Controller
 @RequestMapping("/books")
 public class BookController {
 
     private final BookService bookService;
 
+    public BookController(BookService bookService){
+        this.bookService = bookService;
+    }
 
-    @PostMapping()
-    public Book registerBook(@RequestBody BookDTO bookDTO){
-        return bookService.registerBook(bookDTO);
+    @PostMapping("/create")
+    public String registerBook(BookDTO bookDTO){
+        bookService.registerBook(bookDTO);
+        return "cadastro_de_livros";
     }
 
     @GetMapping()
@@ -44,5 +48,9 @@ public class BookController {
     public ResponseEntity deleteBook(@RequestParam Long id){
         bookService.deleteBook(id);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/home")
+    public String teste(){
+        return "cadastro_de_livros";
     }
 }

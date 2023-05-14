@@ -6,6 +6,7 @@ import com.mackenzie.demo.exception.PraticaprofissionalException;
 import com.mackenzie.demo.service.AdminService;
 import jakarta.websocket.server.PathParam;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,11 +15,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/admin")
 public class AdminController {
 
@@ -28,9 +29,10 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @PostMapping()
-    public Admin registerAdmin(@RequestBody AdminDTO adminDTO){
-        return adminService.registerAdmin(adminDTO);
+    @PostMapping("/create")
+    public String registerAdmin(AdminDTO adminDTO){
+        adminService.registerAdmin(adminDTO);
+        return "cadastrar_usuarios";
     }
 
     @GetMapping()
@@ -47,5 +49,9 @@ public class AdminController {
     public ResponseEntity deleteAdmin (@RequestParam Long id){
         adminService.deleteAdmin(id);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/home")
+    public String teste(){
+        return "cadastrar_usuarios";
     }
 }
