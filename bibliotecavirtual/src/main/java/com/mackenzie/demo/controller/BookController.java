@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
@@ -50,7 +51,9 @@ public class BookController {
         return ResponseEntity.noContent().build();
     }
     @GetMapping("/home")
-    public String teste(){
-        return "cadastro_de_livros";
+    public ModelAndView teste(){
+        ModelAndView modelAndView = new ModelAndView("cadastro_de_livros");
+        modelAndView.addObject("bookDTO", new BookDTO());
+        return modelAndView;
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th=http://www.thymeleaf.org>
 <head>
 <meta name="icons" content="width=device-width, initial-scale=5">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -15,9 +15,9 @@
         <div class="avatar">
             <img src="https://yt3.ggpht.com/a/AATXAJyk8nhYqLaKpWYQwrxmmpagCSn73dyNzN8QCA=s900-c-k-c0xffffffff-no-rj-mo" alt="">
             <div class="avatarName">Administrador<br>
-          <ul>
-          <li><a href="">Sair</a>
-          </div>
+
+            <li><a href="">Sair</a>
+            </div>
 <!--     end of upside area  -->            
         </div>
         <ul class="sideMenu">
@@ -43,7 +43,7 @@
 
           
 <!-- DETAIL FORM -->
-<form action="/devolucao/create" method="POST" class="form">
+<form action="/devolucao/create" method="POST" class="form" th:object="${devolucaoDTO}">
     <div class="formHeader row">
         <h2 class="text-1 fl">Efetuar Devolução</h2>
         <div class="fr">
@@ -53,93 +53,74 @@
     <div class="formBody row">
         <div class="column s-6">
             <label class="inputGroup">
-                <span>Número ISBN</span>
-                <span><input type="text" name="ISBN" placeholder="ISBN"></span>
+                <span>Leitor</span>
+                <span><input type="text" class="form-control" placeholder="Nome" th:field="*{leitor.nome}"></span>
             </label>
             <label class="inputGroup">
-                <span>Valor</span>
-                <span><input type="text" name="Valor" placeholder="Valor"></span>
+                <span>telefone</span>
+                <span><input type="text" class="form-control" placeholder="telefone" th:field="*{leitor.telefone}"></span>
             </label>
             <label class="inputGroup">
-                <span>Data de Empréstimo</span>
+                <span>email</span>
+                <span><input type="text" class="form-control" placeholder="email" th:field="*{leitor.email}"></span>
+            </label>
+            <label class="inputGroup">
+                <span>Senha</span>
+                <span><input type="password" class="form-control" placeholder="Senha" th:field="*{leitor.senha}"></span>
+            </label>
+            <label class="inputGroup">
+                <span>Titulo do Livro</span>
+                <span><input type="text" class="form-control" placeholder="Título" th:field="*{livro.titulo}"></span>
+            </label>
+            <label class="inputGroup">
+                <span>Ano</span>
+                <span><input type="text" class="form-control" placeholder="ano" th:field="*{livro.ano}"></span>
+            </label>
+            <label class="inputGroup">
+                <span>Autor</span>
+                <span><input type="text" class="form-control" placeholder="nome do Autor" th:field="*{livro.autor.nome}"></span>
+            </label>
+            <label class="inputGroup">
+                <span>Data de Nascimento</span>
                 <span>
-				<tr>
-				<td >
-					<input type =  "date" name ="data" style="min-width:205px" placeholder= "Enter number of books">
-				</td>
-				</tr>
-				</span>
-            </label>
-			<label class="inputGroup">
-                <span>Data de Devolução</span>
-                <span>
-				<tr>
-				<td >
-					<input type =  "date" name ="data" style="min-width:205px" placeholder= "Enter number of books">
-				</td>
-				</tr>
-				</span>
+                    <tr>
+                    <td>
+                        <input type="date" class="form-control" style="min-width:205px" th:field="*{livro.autor.dataNascimento}">
+                    </td>
+                    </tr>
+                </span>
             </label>
             <label class="inputGroup">
-                <span>E-mail</span>
-                <span><input type="text" name="note" placeholder="E-mail"></span>
+                <span>Editora</span>
+                <span><input type="text" class="form-control" placeholder="nome da Editora" th:field="*{livro.editora.nome}"></span>
             </label>
-			<label class="inputGroup">
-                <span>Endereço</span>
-                <span><input type="text" name="note" placeholder="Endereço"></span>
+            <label class="inputGroup">
+                <span>CNPJ</span>
+                <span><input type="text" class="form-control" placeholder="cnpj" th:field="*{livro.editora.cnpj}"></span>
+            </label>
+            <label class="inputGroup">
+                <span>Email</span>
+                <span><input type="text" class="form-control" placeholder="email" th:field="*{livro.editora.email}"></span>
+            </label>
+            <label class="inputGroup">
+                <span>Telefone</span>
+                <span><input type="text" class="form-control" placeholder="Telefone" th:field="*{livro.editora.telefone}"></span>
+            </label>
+            <label class="inputGroup">
+                <span>Data Devolucao</span>
+                <span>
+                    <tr>
+                    <td>
+                        <input type="date" class="form-control" style="min-width:205px" th:field="*{dataDevolucao}">
+                    </td>
+                    </tr>
+                </span>
             </label>
         </div>
         
-      <div class="column s-6">
-            <label class="inputGroup">
-                <span>Status</span>
-                
-              <span> 
-                  <select name="cate">
-                      <option value="cate01">ADMIN</option>
-                        <option value="cate02">USUÁRIO</option>
-                    </select>
-                   </span>
-              
-            </label>
-        
-            <label class="inputGroup">
-                <span>Imagem</span>
-                <input type="hidden" name="img" value="src">
-                <span>
-                    <input type="file" name="img" onchange="getImg(this)" multiple>      
-              </span>
-              <ul>
-                <li class="inputGroup">
-              <span>Imagem</span>
-                <input type="hidden" name="img" value="src">
-                <span>
-                    <input type="file" name="img" onchange="getImg(this)" multiple>
-                  </span>
-              <ul>
-                <li class="inputGroup">
-              <span>Imagem</span>
-                <input type="hidden" name="img" value="src">
-                <span>
-                    <input type="file" name="img" onchange="getImg(this)" multiple> </span>
-                  <ul>
-                <li class="inputGroup">
-             
-           </label>
-        </div>
-      
-                  
-      <div class="column">
-          <label class="inputGroup">
-              <span>TERMOS E CONDIÇÕES</span>
-              <textarea name="TAC"></textarea>
-          </label>
-      </div>
+    </div>
 </form> 
-                  
-          <div>
-            <button type="submit" class="btnSave bg-1 text-2a3f54 text-bold fr">SUBMIT</button>
-        </div>
+
     </ul>
 </div>  
         </div>

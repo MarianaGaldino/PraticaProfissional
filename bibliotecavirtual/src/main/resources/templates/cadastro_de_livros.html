@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th=http://www.thymeleaf.org>
+
 <head>
 <meta name="icons" content="width=device-width, initial-scale=5">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -15,9 +16,8 @@
         <div class="avatar">
             <img src="https://yt3.ggpht.com/a/AATXAJyk8nhYqLaKpWYQwrxmmpagCSn73dyNzN8QCA=s900-c-k-c0xffffffff-no-rj-mo" alt="">
             <div class="avatarName">Administrador<br>
-          <ul>
           <li><a href="">Sair</a>
-        </div>
+            </div>
 <!--     end of upside area  -->            
         </div>
         <ul class="sideMenu">
@@ -26,10 +26,10 @@
             <li><a href="product_list.php"><i class="fa fa-shopping-basket my-icon"></i></span>Efetuar devoluções</a></li>
             <li><a href="product_list.php"><i class="fa fa-shopping-basket my-icon"></i></span>Movimentações</a></li>
             <li><a href="order_list.php"><i class="fa fa-book my-icon"></i></span>Cadastrar Usuários</a></li>
-            <li><a href="business_list.php"><i class="fa fa-list my-icon"></i></span>Cadastrar Leitores</a></li>
-            <li><a href="business_list.php"><i class="fa fa-list my-icon"></i></span>Cadastrar Livros</a></li>
-            <li><a href="business_list.php"><i class="fa fa-list my-icon"></i></span>Cadastrar Editora</a></li>
-            <li><a href="business_list.php"><i class="fa fa-list my-icon"></i></span>Cadastrar Autores</a></li>
+            <li><a href="LeitorController.java"><i class="fa fa-list my-icon"></i></span>Cadastrar Leitores</a></li>
+            <li><a href="cadastro_de_livros.html"><i class="fa fa-list my-icon"></i></span>Cadastrar Livros</a></li>
+            <li><a href="cadastrar_editora.html"><i class="fa fa-list my-icon"></i></span>Cadastrar Editora</a></li>
+            <li><a href="cadastrar_autores.html"><i class="fa fa-list my-icon"></i></span>Cadastrar Autores</a></li>
         </ul>
     </div>
 
@@ -43,7 +43,7 @@
 
           
 <!-- DETAIL FORM -->
-<form action="/books/create" method="POST" class="form">
+<form action="/books/create" method="POST" class="form" th:object="${bookDTO}">
     <div class="formHeader row">
         <h2 class="text-1 fl">Cadastrar Livros</h2>
         <div class="fr">
@@ -54,41 +54,41 @@
         <div class="column s-6">
             <label class="inputGroup">
                 <span>Título</span>
-                <span><input type="text" name="Título" placeholder="Título"></span>
+                <span><input type="text" class="form-control" placeholder="Título" th:field="*{titulo}" name="titulo"></span>
             </label>
             <label class="inputGroup">
                 <span>Ano</span>
-                <span><input type="text" name="ano" placeholder="ano"></span>
+                <span><input type="text" class="form-control" placeholder="ano" th:field="*{ano}"></span>
             </label>
             <label class="inputGroup">
                 <span>Autor</span>
-                <span><input type="Autor" name="nome" placeholder="nome do Autor"></span>
+                <span><input type="text" class="form-control" placeholder="nome do Autor" th:field="*{autor.nome}"></span>
             </label>
             <label class="inputGroup">
                 <span>Data de Nascimento</span>
                 <span>
                     <tr>
                     <td>
-                        <input type="date" name="dataNascimento" style="min-width:205px">
+                        <input type="date" class="form-control" style="min-width:205px" th:field="*{autor.dataNascimento}">
                     </td>
                     </tr>
                 </span>
             </label>
             <label class="inputGroup">
                 <span>Editora</span>
-                <span><input type="text" name="nome" placeholder="nome da Editora"></span>
+                <span><input type="text" class="form-control" placeholder="nome da Editora" th:field="*{editora.nome}"></span>
             </label>
             <label class="inputGroup">
-                <span>Editora</span>
-                <span><input type="text" name="cnpj" placeholder="cnpj"></span>
+                <span>CNPJ</span>
+                <span><input type="text" class="form-control" placeholder="cnpj" th:field="*{editora.cnpj}"></span>
             </label>
             <label class="inputGroup">
-                <span>Editora</span>
-                <span><input type="text" name="email" placeholder="email"></span>
+                <span>Email</span>
+                <span><input type="text" class="form-control" placeholder="email" th:field="*{editora.email}"></span>
             </label>
             <label class="inputGroup">
-                <span>Editora</span>
-                <span><input type="text" name="telefone" placeholder="Telefone"></span>
+                <span>Telefone</span>
+                <span><input type="text" class="form-control" placeholder="Telefone" th:field="*{editora.telefone}"></span>
             </label>
         </div>
     </div>
