@@ -42,7 +42,7 @@ public class LeitorController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/home")
+    @GetMapping("/create")
     public String teste(){
         return "cadastrar_leitores";
     }

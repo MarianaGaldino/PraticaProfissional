@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th=http://www.thymeleaf.org>
+<head>
+<meta name="icons" content="width=device-width, initial-scale=5">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<!--code icon form fontawesome.com-->
+<link rel = "stylesheet" type="text/css" href =  "../../css/movimentacoes.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+</head>
+<body>
+  
+<div class="container">
+<!--     upside area     -->
+    <div class="upsideArea">
+        <div class="avatar">
+            <img src="https://yt3.ggpht.com/a/AATXAJyk8nhYqLaKpWYQwrxmmpagCSn73dyNzN8QCA=s900-c-k-c0xffffffff-no-rj-mo" alt="">
+            <div class="avatarName">Administrador<br>
+              <li><a href="">Sair</a>
+            </div>
+<!--     end of upside area  -->            
+        </div>
+        <ul class="sideMenu">
+            <li><a href="/emprestimo/create"><i class="fa fa-briefcase my-icon"></i></span>Efetuar empréstimos</a></li>
+            <li><a href="/devolucao/create"><i class="fa fa-shopping-basket my-icon"></i></span>Efetuar devoluções</a></li>
+            <li><a href="/movimentacao/buscar"><i class="fa fa-shopping-basket my-icon"></i></span>Movimentações</a></li>
+            <li><a href="/leitores/create"><i class="fa fa-list my-icon"></i></span>Cadastrar Leitores</a></li>
+            <li><a href="/books/create"><i class="fa fa-list my-icon"></i></span>Cadastrar Livros</a></li>
+            <li><a href="/editora/create"><i class="fa fa-list my-icon"></i></span>Cadastrar Editora</a></li>
+            <li><a href="/autor/create"><i class="fa fa-list my-icon"></i></span>Cadastrar Autores</a></li>
+        </ul>
+    </div>
+<!--     SIDE AREA -->
+    <div class="mainArea">
+        <div class="mainContent">
+
+          <!-- list -->
+        <div class="areaFilter fr row">
+        </div>
+        <form action="/movimentacao" method="GET"  class="form" th:object="${movimentacao}">
+        <div class="formHeader row">
+            <h2 class="text-1 fl">Movimentações</h2>
+        </div>
+        </form>
+            <h3 class="text-1 fl">Empréstimos</h3>
+        <form>
+            <table	id="tabela-emprestimo" class="table  table-striped   table-bordered  table-hover">
+                <thead class="form">
+                    <tr class="form">
+                        <th>Id</th>
+                        <th>Nome Usuario</th>
+                        <th>Telefone Usuario</th>
+                        <th>email Usuario</th>
+                        <th>Titulo Livro</th>
+                        <th>Autor Livro</th>
+                        <th>Editora Livro</th>
+                        <th>Data Emprestimo</th>
+                    </tr>
+                </thead>
+                <tbody class="form">
+                <tr th:each="emprestimo : ${emprestimo}" class="form">
+                    <td data-label="Id" th:text="${emprestimo.id}" ></td>
+                    <td data-label="Nome Usuario" th:text="${emprestimo.usuario.nome}"></td>
+                    <td data-label="Telefone Usuario" th:text="${emprestimo.usuario.telefone}"></td>
+                    <td data-label="Email Usuario" th:text="${emprestimo.usuario.email}"></td>
+                    <td data-label="Titulo Livro" th:text="${emprestimo?.livro?.titulo}"></td>
+                    <td data-label="Autor Livro" th:text="${emprestimo?.livro?.autor?.nome}"></td>
+                    <td data-label="Editora Livro" th:text="${emprestimo?.livro?.editora?.nome}"></td>
+                    <td data-label="Data Emprestimo" th:text="${emprestimo.dataEmprestimo}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+            <h3 class="text-1 fl">Devoluções</h3>
+        <form>
+        <table	id="tabela-devolucao" class="table  table-striped   table-bordered  table-hover  table-condensed">
+            <thead class="form">
+            <tr class="form">
+                <th>Id</th>
+                <th>Nome Usuario</th>
+                <th>Telefone Usuario</th>
+                <th>email Usuario</th>
+                <th>Titulo Livro</th>
+                <th>Autor Livro</th>
+                <th>Editora Livro</th>
+                <th>Data Devolucao</th>
+            </tr>
+            </thead>
+            <tbody class="form">
+            <tr th:each="devolucao : ${devolucao}" class="form">
+                <td data-label="Id" th:text="${devolucao.id}"></td>
+                <td data-label="Nome Usuario" th:text="${devolucao.usuario.nome}"></td>
+                <td data-label="Telefone Usuario" th:text="${devolucao.usuario.telefone}"></td>
+                <td data-label="Email Usuario" th:text="${devolucao.usuario.email}"></td>
+                <td data-label="Titulo Livro" th:text="${devolucao?.livro?.titulo}"></td>
+                <td data-label="Autor Livro" th:text="${devolucao?.livro?.autor?.nome}"></td>
+                <td data-label="Editora Livro" th:text="${devolucao?.livro?.editora?.nome}"></td>
+                <td	data-label="Data Devolucao" th:text="${devolucao.dataDevolucao}"></td>
+            </tr>
+            </tbody>
+        </table>
+        </form>
+    </div>
+    </div>
+        <!-- END CONTAINER  -->
+</div>
+</body>
+</html>

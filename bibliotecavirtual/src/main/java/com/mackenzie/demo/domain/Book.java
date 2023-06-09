@@ -31,10 +31,10 @@ public class Book {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "titulo")
+    @Column(name = "titulo", nullable = false)
     private String titulo;
 
-    @Column(name = "ano")
+    @Column(name = "ano", nullable = false)
     private Integer ano;
 
     @ManyToOne(cascade = CascadeType.PERSIST)

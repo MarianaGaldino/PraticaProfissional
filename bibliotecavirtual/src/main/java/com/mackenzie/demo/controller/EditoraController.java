@@ -47,7 +47,7 @@ public class EditoraController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/home")
+    @GetMapping("/create")
     public String teste(){
         return "cadastrar_editora";
     }

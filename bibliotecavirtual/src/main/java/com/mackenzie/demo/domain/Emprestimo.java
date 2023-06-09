@@ -27,4 +27,14 @@ public class Emprestimo {
 
     @Column(nullable = false)
     private LocalDate dataEmprestimo;
+
+    @Override
+    public String toString(){
+        return "Emprestimo{" +
+                "id=" + id +
+                ", usuario=" + usuario +
+                ", livro=" + livro +
+                ", dataEmprestimo=" + dataEmprestimo +
+                '}';
+    }
 }

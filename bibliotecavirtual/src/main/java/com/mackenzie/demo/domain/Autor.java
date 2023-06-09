@@ -27,10 +27,10 @@ public class Autor {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome")
+    @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "dataNascimento")
+    @Column(name = "dataNascimento", nullable = false)
     private String dataNascimento;
 
 }

@@ -50,7 +50,7 @@ public class AdminController {
         adminService.deleteAdmin(id);
         return ResponseEntity.noContent().build();
     }
-    @GetMapping("/home")
+    @GetMapping("/create")
     public String teste(){
         return "cadastrar_usuarios";
     }

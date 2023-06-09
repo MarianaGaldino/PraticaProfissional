@@ -28,4 +28,13 @@ public class Devolucao {
     @Column(nullable = false)
     private LocalDate dataDevolucao;
 
+    @Override
+    public String toString(){
+        return "Devolucao{" +
+                "id=" + id +
+                ", usuario=" + usuario +
+                ", livro=" + livro +
+                ", dataDevolucao=" + dataDevolucao +
+                '}';
+    }
 }

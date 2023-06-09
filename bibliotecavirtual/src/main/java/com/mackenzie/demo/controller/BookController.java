@@ -50,7 +50,7 @@ public class BookController {
         bookService.deleteBook(id);
         return ResponseEntity.noContent().build();
     }
-    @GetMapping("/home")
+    @GetMapping("/create")
     public ModelAndView teste(){
         ModelAndView modelAndView = new ModelAndView("cadastro_de_livros");
         modelAndView.addObject("bookDTO", new BookDTO());

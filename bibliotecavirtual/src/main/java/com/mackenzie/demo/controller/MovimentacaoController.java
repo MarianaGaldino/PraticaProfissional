@@ -1,22 +1,35 @@
 package com.mackenzie.demo.controller;
 
-import com.mackenzie.demo.domain.Movimentacao;
-import com.mackenzie.demo.service.MovimentacaoService;
+import com.mackenzie.demo.domain.Devolucao;
+import com.mackenzie.demo.domain.Emprestimo;
+import com.mackenzie.demo.repository.DevolucaoRepository;
+import com.mackenzie.demo.repository.EmprestimoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/movimentacao")
 public class MovimentacaoController {
-    private final MovimentacaoService movimentacaoService;
 
-    public MovimentacaoController(MovimentacaoService movimentacaoService) {
-        this.movimentacaoService = movimentacaoService;
-    }
+    @Autowired
+    private DevolucaoRepository devolucaoRepository;
 
-    @GetMapping
-    public Movimentacao consultarMovimentacao(){
-        return movimentacaoService.consultarMovimentacao();
+    @Autowired
+    private EmprestimoRepository emprestimoRepository;
+
+
+    @GetMapping("/buscar")
+    public ModelAndView teste(){
+
+        List<Emprestimo> emprestimo = emprestimoRepository.findAll();
+        List<Devolucao> devolucao = devolucaoRepository.findAll();
+        ModelAndView modelAndView = new ModelAndView("movimentacoes");
+        modelAndView.addObject("emprestimo", emprestimo);
+        modelAndView.addObject("devolucao", devolucao);
+        return modelAndView;
     }
 }

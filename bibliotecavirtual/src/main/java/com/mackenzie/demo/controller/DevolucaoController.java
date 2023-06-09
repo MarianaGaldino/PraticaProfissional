@@ -29,7 +29,7 @@ public class DevolucaoController {
         devolucaoService.efetuarDevolucao(devolucaoDTO);
         return "efetuar_devolucoes";
     }
-    @GetMapping("/home")
+    @GetMapping("/create")
     public ModelAndView teste(){
         ModelAndView modelAndView = new ModelAndView("efetuar_devolucoes");
         modelAndView.addObject("devolucaoDTO", new DevolucaoDTO());

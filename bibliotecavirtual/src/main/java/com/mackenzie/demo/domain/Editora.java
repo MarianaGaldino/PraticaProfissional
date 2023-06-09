@@ -27,16 +27,16 @@ public class Editora {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome")
+    @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "cnpj")
+    @Column(name = "cnpj", nullable = false)
     private String cnpj;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "telefone")
+    @Column(name = "telefone",nullable = false)
     private String telefone;
 
 }

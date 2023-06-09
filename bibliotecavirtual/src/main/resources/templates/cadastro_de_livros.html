@@ -21,15 +21,13 @@
 <!--     end of upside area  -->            
         </div>
         <ul class="sideMenu">
-            
-          <li><a href="invoice_list.php"><i class="fa fa-briefcase my-icon"></i></span>Efetuar empréstimos</a></li>
-            <li><a href="product_list.php"><i class="fa fa-shopping-basket my-icon"></i></span>Efetuar devoluções</a></li>
-            <li><a href="product_list.php"><i class="fa fa-shopping-basket my-icon"></i></span>Movimentações</a></li>
-            <li><a href="order_list.php"><i class="fa fa-book my-icon"></i></span>Cadastrar Usuários</a></li>
-            <li><a href="LeitorController.java"><i class="fa fa-list my-icon"></i></span>Cadastrar Leitores</a></li>
-            <li><a href="cadastro_de_livros.html"><i class="fa fa-list my-icon"></i></span>Cadastrar Livros</a></li>
-            <li><a href="cadastrar_editora.html"><i class="fa fa-list my-icon"></i></span>Cadastrar Editora</a></li>
-            <li><a href="cadastrar_autores.html"><i class="fa fa-list my-icon"></i></span>Cadastrar Autores</a></li>
+            <li><a href="/emprestimo/create"><i class="fa fa-briefcase my-icon"></i></span>Efetuar empréstimos</a></li>
+            <li><a href="/devolucao/create"><i class="fa fa-shopping-basket my-icon"></i></span>Efetuar devoluções</a></li>
+            <li><a href="/movimentacao/buscar"><i class="fa fa-shopping-basket my-icon"></i></span>Movimentações</a></li>
+            <li><a href="/leitores/create"><i class="fa fa-list my-icon"></i></span>Cadastrar Leitores</a></li>
+            <li><a href="/books/create"><i class="fa fa-list my-icon"></i></span>Cadastrar Livros</a></li>
+            <li><a href="/editora/create"><i class="fa fa-list my-icon"></i></span>Cadastrar Editora</a></li>
+            <li><a href="/autor/create"><i class="fa fa-list my-icon"></i></span>Cadastrar Autores</a></li>
         </ul>
     </div>
 
@@ -43,7 +41,7 @@
 
           
 <!-- DETAIL FORM -->
-<form action="/books/create" method="POST" class="form" th:object="${bookDTO}">
+    <form action="/books/create" method="POST" class="form" th:object="${bookDTO}">
     <div class="formHeader row">
         <h2 class="text-1 fl">Cadastrar Livros</h2>
         <div class="fr">

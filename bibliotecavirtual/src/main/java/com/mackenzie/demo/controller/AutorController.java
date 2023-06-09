@@ -48,7 +48,7 @@ public class AutorController {
         return autorService.updateAutor(id, autorDTO);
     }
 
-    @GetMapping("/home")
+    @GetMapping("/create")
     public String teste(){
         return "cadastrar_autores";
     }

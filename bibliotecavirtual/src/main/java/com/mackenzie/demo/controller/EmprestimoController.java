@@ -26,7 +26,7 @@ public class EmprestimoController {
         emprestimoService.efetuarEmprestimo(emprestimoDTO);
         return "efetuar_emprestimos";
     }
-    @GetMapping("/home")
+    @GetMapping("/create")
     public ModelAndView teste(){
         ModelAndView modelAndView = new ModelAndView("efetuar_emprestimos");
         modelAndView.addObject("emprestimoDTO", new EmprestimoDTO());
