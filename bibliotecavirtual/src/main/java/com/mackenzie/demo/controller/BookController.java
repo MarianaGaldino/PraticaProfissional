@@ -1,6 +1,7 @@
 package com.mackenzie.demo.controller;
 
 import com.mackenzie.demo.domain.Book;
+import com.mackenzie.demo.domain.Leitor;
 import com.mackenzie.demo.domain.dto.BookDTO;
 import com.mackenzie.demo.service.BookService;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,9 +37,13 @@ public class BookController {
         return "cadastro_de_livros";
     }
 
-    @GetMapping()
-    public Optional<Book> getBooks(@RequestParam Long id){
-        return bookService.getBooks(id);
+    @GetMapping("/buscar/{id}")
+    public ModelAndView getBooks(@PathVariable Long id){
+        Optional<Book> book = bookService.getBooks(id);
+
+        ModelAndView modelAndView = new ModelAndView("buscar_livro");
+        modelAndView.addObject("book", book.orElse(null));
+        return modelAndView;
     }
 
     @PutMapping

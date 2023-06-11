@@ -1,8 +1,6 @@
 package com.mackenzie.demo.service;
 
-import com.mackenzie.demo.domain.Admin;
 import com.mackenzie.demo.domain.Leitor;
-import com.mackenzie.demo.domain.dto.AdminDTO;
 import com.mackenzie.demo.domain.dto.LeitorDTO;
 import com.mackenzie.demo.repository.LeitorRepository;
 import lombok.extern.slf4j.Slf4j;

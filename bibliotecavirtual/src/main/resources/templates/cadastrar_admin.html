@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th=http://www.thymeleaf.org>
-
+<html>
 <head>
 <meta name="icons" content="width=device-width, initial-scale=5">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 <!--code icon form fontawesome.com-->
- 	<link rel = "stylesheet" type="text/css" href = "../../css/cadastro_de_livros.css">
+ 	<link rel = "stylesheet" type="text/css" href = "../../css/cadastrar_leitores.css">
 
 </head>
 <body>
@@ -16,7 +15,7 @@
         <div class="avatar">
             <img src="https://yt3.ggpht.com/a/AATXAJyk8nhYqLaKpWYQwrxmmpagCSn73dyNzN8QCA=s900-c-k-c0xffffffff-no-rj-mo" alt="">
             <div class="avatarName">Administrador<br>
-          <li><a href="">Sair</a>
+                <li><a href="">Sair</a>
             </div>
 <!--     end of upside area  -->            
         </div>
@@ -47,9 +46,9 @@
 
           
 <!-- DETAIL FORM -->
-    <form action="/books/create" method="POST" class="form" th:object="${bookDTO}">
+<form action="/admin/create" method="POST" class="form">
     <div class="formHeader row">
-        <h2 class="text-1 fl">Cadastrar Livros</h2>
+        <h2 class="text-1 fl">Cadastrar Admin</h2>
         <div class="fr">
             <button type="submit" class="btnSave bg-1 text-2a3f54 text-bold fr">Salvar</button><a href="" class="btnAdd fa fa-plus bg-1 text-2a3f54"></a>
         </div>
@@ -57,54 +56,27 @@
     <div class="formBody row">
         <div class="column s-6">
             <label class="inputGroup">
-                <span>Título</span>
-                <span><input type="text" class="form-control" placeholder="Título" th:field="*{titulo}" name="titulo"></span>
+                <span>Nome</span>
+                <span><input type="text" name="Nome" placeholder="Nome"></span>
             </label>
             <label class="inputGroup">
-                <span>Ano</span>
-                <span><input type="text" class="form-control" placeholder="ano" th:field="*{ano}"></span>
-            </label>
+                <span>telefone</span>
+                <span><input type="text" name="telefone" placeholder="telefone"></span>
+            </label>			
             <label class="inputGroup">
-                <span>Autor</span>
-                <span><input type="text" class="form-control" placeholder="nome do Autor" th:field="*{autor.nome}"></span>
+                <span>email</span>
+                <span><input type="text" name="email" placeholder="email"></span>
             </label>
-            <label class="inputGroup">
-                <span>Data de Nascimento</span>
-                <span>
-                    <tr>
-                    <td>
-                        <input type="date" class="form-control" style="min-width:205px" th:field="*{autor.dataNascimento}">
-                    </td>
-                    </tr>
-                </span>
-            </label>
-            <label class="inputGroup">
-                <span>Editora</span>
-                <span><input type="text" class="form-control" placeholder="nome da Editora" th:field="*{editora.nome}"></span>
-            </label>
-            <label class="inputGroup">
-                <span>CNPJ</span>
-                <span><input type="text" class="form-control" placeholder="cnpj" th:field="*{editora.cnpj}"></span>
-            </label>
-            <label class="inputGroup">
-                <span>Email</span>
-                <span><input type="text" class="form-control" placeholder="email" th:field="*{editora.email}"></span>
-            </label>
-            <label class="inputGroup">
-                <span>Telefone</span>
-                <span><input type="text" class="form-control" placeholder="Telefone" th:field="*{editora.telefone}"></span>
+			<label class="inputGroup">
+                <span>Senha</span>
+                <span><input type="password" name="Senha" placeholder="Senha"></span>
             </label>
         </div>
     </div>
-</form> 
-                  
-        
-    </ul>
+</form>
 </div>  
-        </div>
-        <!-- END CONTAINER  -->
-    </div>
 </div>
-
+        <!-- END CONTAINER  -->
+</div>
 </body>
 </html>

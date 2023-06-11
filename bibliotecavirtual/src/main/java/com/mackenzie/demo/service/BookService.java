@@ -29,7 +29,7 @@ public class BookService {
     }
 
     public void deleteBook(Long id){
-        log.info("Try to delete book for name {}", id);
+        log.info("Try to delete book for id {}", id);
         bookRepository.deleteById(id);
 
     }
@@ -43,7 +43,7 @@ public class BookService {
     }
 
     public Optional<Book> getBooks(Long id){
-        log.info("Try to get books for name {}", id);
+        log.info("Try to get books for id {}", id);
         return bookRepository.findById(id);
 
     }

@@ -1,17 +1,20 @@
 package com.mackenzie.demo.controller;
 
 import com.mackenzie.demo.domain.Editora;
+import com.mackenzie.demo.domain.Leitor;
 import com.mackenzie.demo.domain.dto.EditoraDTO;
 import com.mackenzie.demo.service.EditoraService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
@@ -31,9 +34,13 @@ public class EditoraController {
         return "cadastrar_editora";
     }
 
-    @GetMapping()
-    public Optional<Editora> getEditora(@RequestParam Long id){
-        return editoraService.getEditora(id);
+    @GetMapping("/buscar/{id}")
+    public ModelAndView getEditora(@PathVariable Long id){
+        Optional<Editora> editora = editoraService.getEditora(id);
+
+        ModelAndView modelAndView = new ModelAndView("buscar_editora");
+        modelAndView.addObject("editora", editora.orElse(null));
+        return modelAndView;
     }
 
     @PutMapping()
